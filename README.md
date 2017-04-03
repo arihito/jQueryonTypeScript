@@ -70,6 +70,8 @@ typings install dt~jquery --save --global
 
 ## tsconfig.jsonの生成
 
+TypeScriptのコードをトランスパイル(jsに変換)する設定ファイルを作成
+
 ```syntax:cli
 tsc --init
 ```
@@ -93,3 +95,59 @@ tsc --init
     ...
   ]
 }
+```
+
+## tsファイルの作成
+
+上記で設定したTypeScriptファイルを変換する。
+
+### ts/config.tsの記述
+
+Configというクラスを定義してENVという定数名にdevという名前空間を定義
+
+**```syntax:TypeScript
+'use strict'
+namespace Config {
+  export const ENV = "dev"
+}
+export default Config;
+```
+
+### ts/model.ts
+
+名前空間のconfig.tsを読み込み開発用の設定でなければ人間クラスに定義した名前プロパティの名前を「さん」付けで返す
+
+```syntax:json
+'use strict'
+import Config from './config';
+
+namespace Model {
+  export class Person {
+    constructor(private name:string = 'dummy') {
+    }
+    public getName():string {
+      if (Config.ENV != 'production') {
+        return this.name;
+      } else {
+        return this.name + 'さん';
+      }
+    }
+  }
+}
+export default Model;
+```
+
+### ts/app.ts
+
+jQueryを読み込み固有名を指定したクラスからインスタンスを生成し名前をドキュメントに表示するメインとなる処理を記述する。
+
+```syntax:TypeScript
+'use strict'
+import Model from './model';
+import $ = require("jquery");
+var user = new Model.Person("Mike");
+$(() => {
+  B
+  $("name").html(user.getName());
+});
+```
