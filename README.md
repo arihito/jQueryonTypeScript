@@ -243,3 +243,26 @@ gulp.task('default', ['webpack']);
 </body>
 </html>
 ```
+
+## Webpackのバンドル実行
+
+package.jsonファイルにクライアントスクリプトを追加
+
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "wp": "webpack"
+  },
+
+```syntax:cli
+npm run wp
+```
+
+> プロジェクトのルートにapp.jsとapp.js.mapが作成されれば成功
+
+## gulpのタスク実行
+
+```syntax:cli
+gulp
+```
+
+> **gulpを実行しdistディレクトリが生成されその中にjs/app.jsが作成されれば成功
