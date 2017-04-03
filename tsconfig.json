@@ -1,0 +1,19 @@
+{
+    "compilerOptions": {
+        "module": "commonjs",
+        "target": "es6",
+        "noImplicitAny": false,
+        "outDir": "built",
+        "rootDir": ".",
+        "sourceMap": false
+    },
+    "files": [
+      "ts/app.ts",
+      "ts/model.ts",
+      "ts/config.ts",
+      "typings/index.d.ts"
+    ],
+    "exclude": [
+        "node_modules"
+    ]
+}
