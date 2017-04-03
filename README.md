@@ -202,7 +202,7 @@ module.exports = config;
 
 初期化のためのファイル削除とwebpackで圧縮結合したファイルをdist/jsに移動するタスクを監視する
 
-**```syntax:JavaScript
+```syntax:JavaScript
 var gulp = require('gulp');
 var webpack = require('gulp-webpack');
 var webpackConfig = require('./webpack.config.js');
