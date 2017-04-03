@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 import Model from './model';
 import $ = require("jquery");

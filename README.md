@@ -147,7 +147,6 @@ import Model from './model';
 import $ = require("jquery");
 var user = new Model.Person("Mike");
 $(() => {
-  B
   $("name").html(user.getName());
 });
 ```
@@ -265,4 +264,4 @@ npm run wp
 gulp
 ```
 
-> **gulpを実行しdistディレクトリが生成されその中にjs/app.jsが作成されれば成功
+> gulpを実行しdistディレクトリが生成されその中にjs/app.jsが作成されれば成功

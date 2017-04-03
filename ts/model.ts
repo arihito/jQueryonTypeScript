@@ -1,10 +1,9 @@
-'use strict'
+'use strict';
 import Config from './config';
 
 namespace Model {
   export class Person {
     constructor(private name:string = 'dummy') {
-    
     }
 
     public getName():string {
@@ -17,4 +16,3 @@ namespace Model {
   }
 }
 export default Model;
-
