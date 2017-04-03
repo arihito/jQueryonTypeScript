@@ -105,7 +105,7 @@ tsc --init
 
 Configというクラスを定義してENVという定数名にdevという名前空間を定義
 
-**```syntax:TypeScript
+```syntax:TypeScript
 'use strict'
 namespace Config {
   export const ENV = "dev"
@@ -151,3 +151,51 @@ $(() => {
   $("name").html(user.getName());
 });
 ```
+
+## webpack.config.jsの設定
+
+NODE_ENVの値がproductionであればjsファイルを圧縮し、それ以外であればエラーの行を出力
+
+**```syntax:JavaScript
+'use strict';
+var path = require('path');
+var webpack = require('webpack');
+var env = process.env.NODE_ENV;
+let config = {
+    entry: {
+        app :'./ts/app.ts'
+    },
+    output: {
+        filename: '[name].js'
+    },
+    resolve: {
+        extensions:['', '.ts', '.webpack.js', '.web.js', '.js']
+    },
+    module: {
+        loaders: [
+            { test: /\.ts$/, loader: 'ts-loader' }
+        ]
+    },
+    plugins: [
+        new webpack.DefinePlugin({
+            'process.env.NODE_ENV' : JSON.stringify(env)
+        }),
+        new webpack.optimize.OccurrenceOrderPlugin()
+    ]
+};
+
+if (env === 'production') {
+    config.output.filename = '[name].min.js';
+    config.plugins.push(new webpack.optimize.UglifyJsPlugin({
+        compress: {
+            warnings: false
+        }
+    }));
+} else {
+    config.devtool = 'source-map';
+}
+
+module.exports = config;
+```
+
+
