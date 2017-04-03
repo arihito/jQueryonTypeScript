@@ -227,3 +227,19 @@ gulp.task('watch', function () {
 
 gulp.task('default', ['webpack']);
 ```
+
+### index.htmlのjsファイル読み込みと表示IDを設定
+
+```syntax:html
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <title>TypeScriptのテスト</title>
+    <script src="dist/js/app.js"></script>
+</head>
+<body>
+<div id="name"></div>
+</body>
+</html>
+```
