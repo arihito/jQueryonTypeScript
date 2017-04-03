@@ -156,7 +156,7 @@ $(() => {
 
 NODE_ENVの値がproductionであればjsファイルを圧縮し、それ以外であればエラーの行を出力
 
-**```syntax:JavaScript
+```syntax:JavaScript
 'use strict';
 var path = require('path');
 var webpack = require('webpack');
